@@ -1,0 +1,1 @@
+https://api.openweathermap.org/data/2.5/weather?q=sivas&appid=057275c30dc7aecc34c49be69110d6d1&lang=tr&units=metric
