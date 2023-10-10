@@ -31,8 +31,10 @@ const TodoList = ({ allTodos, setAllTodos }) => {
         setIsDisable(!isDisable)
 
     }
+
+
     return (
-        <ul>
+        <>
             {
                 allTodos?.map((todo, id) => (
                     <li key={id} style={{ color: todo.isComplete ? "green" : "red" }}>
@@ -43,22 +45,24 @@ const TodoList = ({ allTodos, setAllTodos }) => {
                                     value={editTodoName}
                                     onChange={(e) => setEditTodoName(e.target.value)}
                                 />
-                                <button onClick={() => saveTodo(todo.id)}>Save</button>
+                                <button onClick={() => saveTodo(todo.id)}><i className="fa-solid fa-floppy-disk fa-xl"></i></button>
                             </div>) :
                             (
-                                <>
-                                    {todo.name}
-                                    <button onClick={() => { checkTodo(todo.id) }}>Check</button>
-                                    <button disabled={isDisable} onClick={() => { editTodo(todo.id) }}>Edit</button>
-                                    <button onClick={() => { deleteTodo(todo.id) }}>Delete</button>
-                                </>
+                                <div>
+                                    <p>{todo.name}</p>
+                                    <div>
+                                        <button onClick={() => { checkTodo(todo.id) }}><i className="fa-regular fa-circle-check fa-xl"></i></button>
+                                        <button disabled={isDisable} onClick={() => { editTodo(todo.id) }}><i className="fa-solid fa-pencil fa-xl"></i></button>
+                                        <button onClick={() => { deleteTodo(todo.id) }}><i className="fa-solid fa-trash-can fa-xl"></i></button>
+                                    </div>
+                                </div>
                             )
                         }
 
                     </li>
                 ))
             }
-        </ul>
+        </>
     )
 }
 TodoList.propTypes = {

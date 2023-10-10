@@ -17,7 +17,7 @@ const Form = ({ allTodos, setAllTodos }) => {
     }
     return (
         <form onSubmit={(e) => addItem(e)}>
-            <input type="text" placeholder="Lütfen bir içerik giriniz!" ref={inputRef} />
+            <input type="text" placeholder="Please enter a content!" ref={inputRef} />
             <button type="submit">Add</button>
         </form>
     )
