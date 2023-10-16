@@ -1,12 +1,24 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import PropTypes from 'prop-types'
+import Modal from "./Modal";
 
 const Form = ({ allTodos, setAllTodos }) => {
     const inputRef = useRef()
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const closeAfterDelay = () => {
+        setTimeout(() => {
+            setIsModalOpen(false);
+        }, 1500);
+    };
 
     const addItem = (e) => {
         e.preventDefault();
-        inputRef.current.value == "" ? alert("lütfen bir todo gir") :
+        inputRef.current.value == "" ?
+            (
+                setIsModalOpen(true),
+                closeAfterDelay()
+            ) :
             setAllTodos([{
                 id: self.crypto.randomUUID(),
                 name: inputRef.current.value,
@@ -15,11 +27,17 @@ const Form = ({ allTodos, setAllTodos }) => {
             }, ...allTodos]);
         inputRef.current.value = "";
     }
+
     return (
-        <form onSubmit={(e) => addItem(e)}>
-            <input type="text" placeholder="Please enter a content!" ref={inputRef} />
-            <button type="submit">Add</button>
-        </form>
+        <div>
+            <form onSubmit={(e) => addItem(e)}>
+                <input type="text" placeholder="Please enter a content!" ref={inputRef} />
+                <button type="submit">Add</button>
+            </form>
+            {isModalOpen && (
+                <Modal message="Please enter a content !!!" />
+            )}
+        </div>
     )
 }
 
