@@ -10,9 +10,9 @@ const EnterLocation = ({ locationData, setLocationData }) => {
         getApiData(inputRef.current.value).then(data => { setLocationData(data) })
     }
 
-
     return (
         <div>
+     
             <form onSubmit={(e) => search(e)}>
                 <input type="text" placeholder="Lütfen bir lokasyon giriniz!" ref={inputRef} />
                 <button type="submit">Search</button>
@@ -22,6 +22,9 @@ const EnterLocation = ({ locationData, setLocationData }) => {
             }
         </div>
     )
+    // https://api.openweathermap.org/data/2.5/weather?q=sivas&appid=057275c30dc7aecc34c49be69110d6d1&lang=tr&units=metric
+    // https://api.openweathermap.org/data/2.5/forecast?q=sivas&appid=057275c30dc7aecc34c49be69110d6d1&lang=tr&units=metric
+
 }
 
 EnterLocation.propTypes = {

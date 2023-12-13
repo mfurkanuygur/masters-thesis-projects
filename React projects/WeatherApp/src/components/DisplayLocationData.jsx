@@ -3,19 +3,40 @@ import { Link } from 'react-router-dom'
 
 const DisplayLocationData = ({ locationData }) => {
     return (
-        <div>
-            <ul>
-                <li>{locationData?.id}</li>
-                <li>{locationData?.name}</li>
-                <li>{locationData?.weather[0].description}</li>
-                <img src={`https://openweathermap.org/img/wn/${locationData?.weather[0].icon}@2x.png`} alt="" />
-                <li>Ana Sıcaklık: {locationData?.main.temp}</li>
-                <li>Hissedilen: {locationData?.main.feels_like}</li>
-                <li>En düşük: {locationData?.main.temp_min}</li>
-                <li>En yüksek: {locationData?.main.temp_max}</li>
-                <li>Nem: {locationData?.main.humidity}</li>
-            </ul>
-            <Link to={`/${locationData?.name}`}><button >See More Details</button></Link>
+        <div className='card' key={locationData?.id}>
+            <div className='card-header'>
+                <div>
+                    <h2>{locationData?.name}</h2>
+                    <p>Chance of rain: {locationData?.main.humidity}%</p>
+                    <h1>{Math.floor(locationData.main.temp)}°C</h1>
+                </div>
+                <div className='weather-status'>
+                    <img className='weather-img' src={`https://openweathermap.org/img/wn/${locationData?.weather[0].icon}@2x.png`} alt="" />
+                    <p className='weather-description'>{locationData?.weather[0].description}</p>
+                </div>
+            </div>
+
+            <div className='card-body'>
+                <div className='center-text'>
+                    <p>feels like:</p>
+                    <p> {Math.floor(locationData?.main.feels_like)}°C</p>
+                </div>
+                <div className='center-text'>
+                    <p>Min Temp: </p>
+                    <p>{Math.floor(locationData?.main.temp_min)}°C</p></div>
+                <div className='center-text'>
+                    <p>Max Temp: </p>
+                    <p>{Math.ceil(locationData?.main.temp_max)}°C</p></div>
+                <div className='center-text'>
+                    <p>Humidity: </p>
+                    <p>{(locationData?.main.humidity)}%</p>
+                </div>
+            </div>
+            <div className='card-footer'>
+                <Link to={`/${locationData?.name}`}>
+                    <button className='detail-link' >See More Details</button>
+                </Link>
+            </div>
         </div>
     )
 }
