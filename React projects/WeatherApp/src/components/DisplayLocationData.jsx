@@ -17,17 +17,17 @@ const DisplayLocationData = ({ locationData }) => {
             </div>
 
             <div className='card-body'>
-                <div className='center-text'>
+                <div className='center-item'>
                     <p>feels like:</p>
                     <p> {Math.floor(locationData?.main.feels_like)}°C</p>
                 </div>
-                <div className='center-text'>
+                <div className='center-item'>
                     <p>Min Temp: </p>
                     <p>{Math.floor(locationData?.main.temp_min)}°C</p></div>
-                <div className='center-text'>
+                <div className='center-item'>
                     <p>Max Temp: </p>
                     <p>{Math.ceil(locationData?.main.temp_max)}°C</p></div>
-                <div className='center-text'>
+                <div className='center-item'>
                     <p>Humidity: </p>
                     <p>{(locationData?.main.humidity)}%</p>
                 </div>

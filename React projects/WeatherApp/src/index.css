@@ -84,10 +84,10 @@ form>button{
     padding:  15px;
 
 }
-.center-text p{
+.center-item p{
     margin: 0;
 }
-.center-text>p:first-child {
+.center-item>p:first-child {
     text-transform: capitalize;
 }
 .card-footer{
