@@ -7,13 +7,13 @@ import Router from './routes/Router'
 function App() {
 
   return (
-    <>
+    <main>
       {/* <EnterLocation setLocationData={setLocationData} /> */}
       <Router/>
       {/* {
         locationData == null ? <div>Henüz bir bilgi yok</div> : <DisplayLocationData locationData={locationData} />
       } */}
-    </>
+    </main>
   )
 }
 

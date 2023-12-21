@@ -1,24 +1,34 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { getApiData } from '../request/request';
 import DisplayLocationData from './DisplayLocationData';
+import Loading from './Loading';
 
-const EnterLocation = ({ locationData, setLocationData }) => {
+const EnterLocation = ({ locationData, setLocationData, cityName, setCityName }) => {
     const inputRef = useRef()
+
+    useEffect(() => {
+        if (cityName == "Kayseri") {
+            getApiData("Kayseri").then(data => { setLocationData(data) })
+        }
+        else {
+            getApiData(cityName).then(data => { setLocationData(data) })
+        }
+    }, [])
+
     const search = (e) => {
         e.preventDefault();
-        getApiData(inputRef.current.value).then(data => { setLocationData(data) })
+        getApiData(inputRef?.current?.value).then(data => { setLocationData(data), setCityName(inputRef?.current?.value) })
     }
 
     return (
         <div>
-     
             <form onSubmit={(e) => search(e)}>
-                <input type="text" placeholder="Lütfen bir lokasyon giriniz!" ref={inputRef} />
+                <input type="text" placeholder="Enter a location!" ref={inputRef} />
                 <button type="submit">Search</button>
             </form>
             {
-                locationData == null ? <div>Henüz bir bilgi yok</div> : <DisplayLocationData locationData={locationData} />
+                locationData == null ? <Loading /> : <DisplayLocationData locationData={locationData} />
             }
         </div>
     )
@@ -28,7 +38,9 @@ const EnterLocation = ({ locationData, setLocationData }) => {
 }
 
 EnterLocation.propTypes = {
-    locationData:PropTypes.object,
+    cityName: PropTypes.string,
+    setCityName: PropTypes.func,
+    locationData: PropTypes.object,
     setLocationData: PropTypes.func
 }
 export default EnterLocation
