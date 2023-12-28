@@ -3,9 +3,6 @@ import getApiData from "../request/request"
 import { Link } from "react-router-dom"
 
 const Homepage = ({ pokemons, setPokemons }) => {
-    // const [pokemons, setPokemons] = useState()
-
-
     useEffect(() => {
         !pokemons &&
             getApiData().then(items => {
@@ -24,7 +21,10 @@ const Homepage = ({ pokemons, setPokemons }) => {
                         <Link to={pokemon?.name} key={index}>
                             <div className="pokemon-card">
                                 <div className="pokemon-img">
-                                    <img src={pokemon?.sprites.other.dream_world.front_default} />
+                                    {/* <img src={pokemon?.sprites.other.dream_world.front_default} /> */}
+                                    <img src={pokemon?.sprites?.other?.["official-artwork"]?.front_default} />
+
+
                                 </div>
                                 <div className="pokemon-title">
                                     <p>{pokemon?.name}</p>
