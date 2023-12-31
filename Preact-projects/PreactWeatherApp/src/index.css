@@ -1,68 +1,251 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
+}
+
+main {
+  margin: 30px;
+}
+
+/* enter location */
+form {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  margin: 20px 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+input {
+  width: 100%;
+  border-radius: 10px 0 0 10px;
+  padding: 0 10px;
+  border: none;
+  outline: none;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+form>button {
+  padding: 10px 20px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  outline: none;
+}
+
+/* display current day */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  min-height: 220px;
+}
+
+.weather-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-img {
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.weather-description {
+  padding: 0;
+  margin: 0;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: 30px;
+}
+
+.card-footer {
+  margin: 20px;
+}
+
+.center-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 20px;
+
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+}
+
+.center-item p {
+  margin: 0;
+  text-align: center;
+}
+
+.item-title>p {
+  text-transform: capitalize;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.item-title {
+  display: flex;
+  align-items: center;
+}
+
+.card-footer {
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-link {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 10px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  text-transform: capitalize;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* detail-page */
+.detail-main-container {
+  padding: 20px 75px;
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  margin: 50px;
+}
+
+.detail-main-container>h1 {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.today-main-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px 10px;
+  margin-bottom: 15px;
+  /* From https://css.glass */
+  background: rgba(149, 35, 35, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+}
+
+.today-main {
+  text-align: center;
+  margin: 10px;
+  /* From https://css.glass */
+  background: rgba(133, 81, 81, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+}
+
+.today-card {
+  padding: 10px;
+}
+
+.today-card-header>img {
+  width: 100px;
+}
+
+.today-card-body div {
+  margin: 5px 0;
+}
+
+/* other day */
+.remain-day-container {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+
+  background: rgba(133, 81, 81, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+}
+
+.other-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 120px;
+  padding: 20px 10px;
+  margin: 20px;
+
+  background: rgba(133, 81, 81, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+}
+
+.other-day>h4 {
+  padding: 10px 0;
+
+}
+
+.other-day-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.other-day-text p {
+  margin: 10px;
+}
+
+.other-day-text i {
+  margin: 5px;
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
 }

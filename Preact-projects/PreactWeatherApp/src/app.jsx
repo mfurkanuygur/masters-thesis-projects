@@ -1,33 +1,20 @@
-import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
+import Router from 'preact-router';
+
 import './app.css'
+import EnterLocation from './components/EnterLocation';
+import DetailPage from './components/DetailPage';
+import { useState } from 'preact/hooks';
 
 export function App() {
-  const [count, setCount] = useState(0)
+
+  const [locationData, setLocationData] = useState()
+  const [cityName, setCityName] = useState("Kayseri")
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
-      </div>
-      <h1>Vite + Preact</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/app.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
-    </>
+    <Router>
+      <EnterLocation path="/" locationData={locationData} setLocationData={setLocationData} cityName={cityName} setCityName={setCityName}/>
+      <DetailPage path="/:id" />
+
+    </Router>
   )
 }
