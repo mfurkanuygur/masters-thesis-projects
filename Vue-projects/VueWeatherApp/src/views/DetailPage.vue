@@ -1,7 +1,16 @@
 <template>
-  <div class="about">
-    <MoreDetailLocation />
-    {{ this.id }}
+  <div>
+    <div class="daily-weather">
+      <div v-for="weather in dailyWeathers" :key="weather.id">
+        <OneDayDetail :weather="weather" />
+      </div>
+    </div>
+    <div class="daily-weather">
+      <div v-for="weather in remainingDays" :key="weather.id">
+        <DailyDetail :weather="weather" />
+      </div>
+    </div>
+    <button @click="test">asd</button>
     <router-link :to="{ path: `/` }">
       <!-- <router-link :to="{ name: 'detailPage', params: { id: cityData?.id } }"> -->
       <button className="button-link">Go home</button>
@@ -10,31 +19,37 @@
 </template>
 
 <script>
-import MoreDetailLocation from "../components/MoreDetailLocation.vue";
+import OneDayDetail from "../components/OneDayDetail.vue";
+import DailyDetail from '../components/DailyDetail.vue'
 import { getCityDetailData } from "../request/request";
+import { dailyWeathers, remainingDays } from "../chunked/chunked";
 
 export default {
   props: ["id"],
-  components: { MoreDetailLocation },
+  components: { OneDayDetail,DailyDetail },
   data() {
     return {
-      detailsCity: null,
+      cityDetails: null,
+      dailyWeathers: null,
+      remainingDays: null,
     };
+  },
+  methods: {
+    test() {
+      console.log(this.remainingDays);
+    },
   },
   mounted() {
     getCityDetailData(this.id).then((data) => {
-      (this.detailsCity = data), console.log(data);
+      this.dailyWeathers = dailyWeathers(data)[0];
+      this.remainingDays = remainingDays(data);
     });
   },
 };
 </script>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+<style scoped>
+.daily-weather {
+  display: flex;
 }
 </style>

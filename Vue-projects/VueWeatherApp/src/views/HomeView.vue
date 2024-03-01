@@ -22,13 +22,13 @@ export default {
     handleSearch(newCity) {
       this.cityName = newCity;
       getApiData(this.cityName).then((data) => {
-        (this.cityData = data), console.log(data);
+        (this.cityData = data);
       });
     },
   },
   mounted() {
     getApiData(this.cityName).then((data) => {
-      (this.cityData = data), console.log(data);
+      (this.cityData = data);
     });
   },
 };
