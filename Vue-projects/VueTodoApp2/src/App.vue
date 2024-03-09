@@ -1,6 +1,9 @@
 <template>
   <main>
-    <div>
+    <h1>Erciyes University</h1>
+    <h2>Master Project</h2>
+    <h3>Todo App With Vue</h3>
+    <div class="todo-form">
       <EditForm
         v-if="isEdit"
         :editTodo="editTodo"
@@ -8,16 +11,15 @@
         @changeIsEdit="handleChangeEdit"
       />
       <Form v-else @addNewTodo="handleAddTodo" />
-
-      <div v-for="todo in todos" :key="todo.id">
-        <SingleTodo
-          :todo="todo"
-          @deleteTodo="handleDelete"
-          @completeTodo="handleComplete"
-          @editTodo="handleEdit"
-          :isEdit="isEdit"
-        />
-      </div>
+    </div>
+    <div v-for="todo in todos" :key="todo.id" class="todos">
+      <SingleTodo
+        :todo="todo"
+        @deleteTodo="handleDelete"
+        @completeTodo="handleComplete"
+        @editTodo="handleEdit"
+        :isEdit="isEdit"
+      />
     </div>
   </main>
 </template>
@@ -58,30 +60,27 @@ export default {
 </script>
 
 <style scoped>
-header {
-  line-height: 1.5;
+main {
+  font-family: "Roboto", sans-serif;
+  max-width: 500px;
+  min-width: 500px;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+.todo-form {
+  margin: 20px 0;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@media (max-width: 768px) {
+  main {
+    min-width: 350px;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .todo-form,
+  .todos {
+    padding: 0 20px;
   }
 }
 </style>
