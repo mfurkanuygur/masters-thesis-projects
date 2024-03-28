@@ -2,7 +2,7 @@
   <div className="today-main">
     <div className="today-card">
       <div className="card-text">
-        <!-- {/* <i className="fa-regular fa-clock"></i> */} -->
+        <i className="fa-regular fa-clock"></i>
         {{ weather?.dt_txt.slice(11).slice(0, 5) }}
       </div>
       <div className="today-card-header">
@@ -32,6 +32,13 @@ export default {
 
 <style scoped>
 .today-main {
-  display: flex;
+  background: rgba(255, 255, 255, 0.458);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.8px);
+  -webkit-backdrop-filter: blur(7.8px);
+  border: 1px solid rgba(255, 255, 255, 0.57);
+  padding: 30px;
+  text-align: center;
 }
 </style>

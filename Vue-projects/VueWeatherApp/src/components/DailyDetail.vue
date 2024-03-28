@@ -2,11 +2,11 @@
   <div className="other-day">
     <h4>{{ dayName }}</h4>
     <div className="other-day-text">
-      <p className="">
+      <p className="text">
         <i className="fa-solid fa-temperature-low"></i>
         {{ Math.floor(min_temp[0].main.temp_min) }}°C
       </p>
-      <span>/</span>
+      /
       <p>
         {{ Math.floor(max_temp[0].main.temp_max) }}°C
         <i className="fa-solid fa-temperature-high"></i>
@@ -29,44 +29,57 @@ export default {
       dayName: null,
     };
   },
-  computed() {
-    const day = new Date(this.weather[0].dt_txt).getDay();
-    switch (day) {
-      case 0:
-        this.dayName = "Sunday";
-        console.log(this.dayName);
-        break;
-      case 1:
-        this.dayName = "Monday";
-        console.log(this.dayName);
-
-        break;
-      case 2:
-        this.dayName = "Tuesday";
-        console.log(this.dayName);
-
-        break;
-      case 3:
-        this.dayName = "Wednesday";
-        console.log(this.dayName);
-
-        break;
-      case 4:
-        this.dayName = "Thursday";
-        console.log(this.dayName);
-
-        break;
-      case 5:
-        this.dayName = "Friday";
-        console.log(this.dayName);
-        break;
-      case 6:
-        this.dayName = "Saturday";
-        console.log(this.dayName);
-        break;
-    }
+  computed: {
+    dayName() {
+      const day = new Date(this.weather[0].dt_txt).getDay();
+      switch (day) {
+        case 0:
+          return "Sunday";
+        case 1:
+          return "Monday";
+        case 2:
+          return "Tuesday";
+        case 3:
+          return "Wednesday";
+        case 4:
+          return "Thursday";
+        case 5:
+          return "Friday";
+        case 6:
+          return "Saturday";
+        default:
+          return "";
+      }
+    },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.other-day {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.458);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.8px);
+  -webkit-backdrop-filter: blur(7.8px);
+  border: 1px solid rgba(255, 255, 255, 0.57);
+  padding: 30px;
+  text-align: center;
+}
+
+.other-day-text {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+</style>
