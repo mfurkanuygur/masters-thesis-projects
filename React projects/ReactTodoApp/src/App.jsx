@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import './App.css'
-import Form from './components/Form'
-import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm'
+import SingleTodo from './components/SingleTodo';
 function App() {
   const [allTodos, setAllTodos] = useState([]);
+  const [isDisable, setIsDisable] = useState(false)
 
   return (
     <main>
-      <h1>Erciyes University Master Project</h1>
-      <h2>Todo App With React</h2>
-      <Form allTodos={allTodos} setAllTodos={setAllTodos} />
-      <ul>
-        {
-          allTodos?.length > 0 ? <TodoList allTodos={allTodos} setAllTodos={setAllTodos} /> : <div className='message'>No content added yet</div>
-        }
-      </ul>
+      <h1>Erciyes University</h1>
+      <h2>Master Project</h2>
+      <h3>Todo App With React</h3>
+      <TodoForm allTodos={allTodos} setAllTodos={setAllTodos} />
+      {
+        allTodos?.map(todo => (
+          < SingleTodo allTodos={allTodos} setAllTodos={setAllTodos} isDisable={isDisable} setIsDisable={setIsDisable} todo={todo} key={todo.id} />
+        ))
+      }
 
     </main>
   )

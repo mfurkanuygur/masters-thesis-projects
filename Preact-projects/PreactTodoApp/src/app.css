@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: gainsboro;
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -47,10 +47,7 @@ button[type=submit]:hover {
   color: white;
 }
 
-.message {
-  /* margin-top: 50px; */
 
-}
 
 
 ul {
@@ -58,10 +55,8 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin: 0 auto; */
   padding: 0;
   margin: 10px;
-  /* width: 450px; */
 }
 
 li {
@@ -81,7 +76,6 @@ li>div {
   padding: 0 10px;
   margin: 10px 0;
   border-radius: 10px;
-  /* background-color: thistle; */
 }
 
 li>div button {
@@ -127,4 +121,4 @@ li>div button:hover {
   background-color: rgb(84, 84, 84);
   padding: 10px 20px;
   border-radius: 10px;
-}
+} */
