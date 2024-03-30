@@ -15,10 +15,10 @@
         </div>
       </div>
       <Loading v-else />
-     <div>
+     <div className="button-link">
         <router-link :to="{ path: `/` }">
           <!-- <router-link :to="{ name: 'detailPage', params: { id: cityData?.id } }"> -->
-          <button className="button-link">Go home</button>
+          <button >Go home</button>
         </router-link>
      </div>
     </div>
@@ -92,5 +92,11 @@ export default {
   font-size: 28px;
   padding: 0;
   margin: 0;
+}
+.button-link{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

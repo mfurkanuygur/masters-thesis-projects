@@ -3,10 +3,12 @@
     padding: 0;
     margin: 0;
     font-family: "Inter Tight", sans-serif;
+    text-decoration: none;
 }
 
 body {
     background-color: rgb(255, 255, 255);
+
 }
 
 main {
@@ -105,7 +107,6 @@ button:hover {
     gap: 5px;
     align-items: center;
     font-weight: bold;
-    font-size: 17px;
 }
 
 @media (max-width:1024px) {
@@ -258,4 +259,11 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.button-link{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'preact/hooks'
 import OneDayDetail from "../components/OneDayDetail";
 import DailyDetail from "../components/DailyDetail";
 import { getCityDetailData } from '../requests/request';
+import { Link } from 'preact-router/match';
 
 import { dailyWeathers, remainingDays } from "../chunked/chunked";
 import Loading from "../components/Loading"
@@ -35,6 +36,11 @@ const DetailPage = (props) => {
                 </div> ||
                 <Loading />
             }
+            <div className='button-link' >
+                <Link href={`/`}>
+                    <button>Go home</button>
+                </Link>
+            </div>
             {/* <div className="today-container">
         {dailyWeathers(cityDetail)[0]?.map((weather, i) => (
           <OneDayDetail weather={weather} key={i} />

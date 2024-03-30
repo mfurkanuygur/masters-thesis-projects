@@ -1,6 +1,6 @@
 import OneDayDetail from "../components/OneDayDetail";
 import DailyDetail from "../components/DailyDetail";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCityDetailData } from "../request/request";
 import { dailyWeathers, remainingDays } from "../chunked/chunked";
@@ -42,6 +42,11 @@ const DetailPage = () => {
         </div> ||
         <Loading />
       }
+      <div  className='button-link'>
+        <Link to={`/`}>
+          <button >Go home</button>
+        </Link>
+      </div>
       {/* <div className="today-container">
         {dailyWeathers(cityDetail)[0]?.map((weather, i) => (
           <OneDayDetail weather={weather} key={i} />

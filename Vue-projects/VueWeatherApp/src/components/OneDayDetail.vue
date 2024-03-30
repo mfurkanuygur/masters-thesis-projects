@@ -41,4 +41,7 @@ export default {
   padding: 30px;
   text-align: center;
 }
+.card-text{
+  font-weight: bold;
+}
 </style>
