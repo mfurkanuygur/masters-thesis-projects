@@ -6,10 +6,11 @@ import DetailPage from './views/DetailPage.jsx';
 export function App() {
   return (
     <main>
-      <Router>
+      <Homeview />
+      {/* <Router>
         <Homeview path="/" />
         <DetailPage path="/:id" />
-      </Router>
+      </Router> */}
     </main>
   )
 }

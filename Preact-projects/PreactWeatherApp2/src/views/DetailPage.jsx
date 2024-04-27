@@ -7,12 +7,12 @@ import { Link } from 'preact-router/match';
 import { dailyWeathers, remainingDays } from "../chunked/chunked";
 import Loading from "../components/Loading"
 
-const DetailPage = (props) => {
+const DetailPage = ({detailData}) => {
     const [cityDetail, setCityDetail] = useState()
-
-    useEffect(() => {
-        getCityDetailData(props.id).then(data => setCityDetail(data))
-    }, [props.id])
+    console.log(detailData)
+    // useEffect(() => {
+    //     getCityDetailData(props.id).then(data => setCityDetail(data))
+    // }, [props.id])
 
     const dateNow = new Date().toJSON().slice(0, 10);
     // const dailyWeathers = [...chunked(cityDetail?.list, 8)];
@@ -21,26 +21,26 @@ const DetailPage = (props) => {
     return (
         <div className="detail-page">
             <h1 className="detail-title">today weather </h1>
-            {cityDetail &&
+            {!cityDetail &&
                 <div className="detail-container">
                     <div className="today-container">
-                        {dailyWeathers(cityDetail)[0]?.map((weather, i) => (
+                        {dailyWeathers(detailData)[0]?.map((weather, i) => (
                             <OneDayDetail weather={weather} key={i} />
                         ))}
                     </div>
                     <div className="remain-container">
-                        {remainingDays(cityDetail).map((weather, i) => (
+                        {remainingDays(detailData).map((weather, i) => (
                             <DailyDetail key={i} weather={weather} />
                         ))}
                     </div>
                 </div> ||
                 <Loading />
             }
-            <div className='button-link' >
+            {/* <div className='button-link' >
                 <Link href={`/`}>
                     <button>Go home</button>
                 </Link>
-            </div>
+            </div> */}
             {/* <div className="today-container">
         {dailyWeathers(cityDetail)[0]?.map((weather, i) => (
           <OneDayDetail weather={weather} key={i} />
