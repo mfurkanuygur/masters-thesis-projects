@@ -28,7 +28,7 @@ const TodoForm = ({ allTodos, setAllTodos }) => {
     return (
         <form onSubmit={(e) => addItem(e)}>
             <input type="text" placeholder="Please enter a todo!" ref={inputRef} />
-            <button type="submit">
+            <button type="submit" aria-label="add">
                 <i className="fa-solid fa-square-plus fa-xl addIcon"></i>
             </button>
         </form>

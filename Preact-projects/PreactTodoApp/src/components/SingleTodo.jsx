@@ -45,14 +45,14 @@ const SingleTodo = ({ todo, allTodos, setAllTodos, isDisable, setIsDisable }) =>
                     <div className={`todo-container ${todo.isComplete && "active"}`}>
                         <p className={`todo-name ${todo.isComplete && "done"}`}>{todo.name}</p>
                         <div className='todo-buttons'>
-                            <button className='todo-button' onClick={() => { deleteTodo(todo.id) }}>
+                            <button className='todo-button' onClick={() => { deleteTodo(todo.id) }} aria-label="delete">
                                 <i className="fa-solid fa-trash-can fa-xl"></i>
                             </button>
-                            <button className='todo-button' disabled={isDisable} onClick={() => { editTodo(todo.id) }}>
+                            <button className='todo-button' disabled={isDisable} onClick={() => { editTodo(todo.id) }} aria-label="edit">
                                 <i className="fa-solid fa-pencil fa-xl"></i>
                             </button>
-                            <button className='todo-button' onClick={() => { checkTodo(todo.id) }}>
-                                <i className={`fa-solid fa-circle-check fa-xl ${todo.isComplete && "tick"}`} ></i>
+                            <button className='todo-button' onClick={() => { checkTodo(todo.id) }} aria-label="check">
+                                <i className={`fa-solid fa-circle-check fa-xl ${todo.isComplete && "tick"}`}  ></i>
                             </button>
                         </div>
                     </div>
