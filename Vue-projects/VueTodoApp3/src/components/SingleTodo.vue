@@ -13,18 +13,19 @@
         {{ todo.name }}
       </p>
       <div class="todo-buttons">
-        <button class="todo-button" @click="deleteTodo">
+        <button class="todo-button" @click="deleteTodo" aria-label="delete todo">
           <i class="fa-solid fa-trash-can fa-xl"></i>
+        </button>
+        <button class="todo-button" @click="editTodo" :disabled="state" aria-label="edit todo">
+          <i class="fa-solid fa-pen fa-xl"></i>
         </button>
         <button
           class="todo-button"
           @click="completeTodo"
           :class="{ tick: todo.isComplete }"
+          aria-label="check todo"
         >
           <i class="fa-solid fa-circle-check fa-xl"></i>
-        </button>
-        <button class="todo-button" @click="editTodo" :disabled="state">
-          <i class="fa-solid fa-pen fa-xl"></i>
         </button>
       </div>
     </div>

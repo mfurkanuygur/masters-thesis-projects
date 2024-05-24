@@ -5,7 +5,7 @@
       placeholder="Please enter a todo!"
       v-model="inputValue"
     />
-    <button type="submit">
+    <button type="submit" aria-label="add todo">
       <i class="fa-solid fa-square-plus fa-xl icon"></i>
     </button>
   </form>
