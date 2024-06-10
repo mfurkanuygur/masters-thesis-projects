@@ -1,26 +1,31 @@
 <template>
-  <form>
-    <input type="text" placeholder="edit a todo" v-model="this.editTodo.name" />
-    <button class="form-button" @click.prevent="saveTodo">
-      <i class="fa-solid fa-floppy-disk fa-xl icon"></i>
+  <form @submit.prevent="addTodo">
+    <input
+      type="text"
+      placeholder="Please enter a todo!"
+      v-model="inputValue"
+    />
+    <button type="submit" aria-label="add todo">
+      <i class="fa-solid fa-square-plus fa-xl icon"></i>
     </button>
   </form>
 </template>
 
-<script>
-export default {
-  props: ["editTodo", "isEdit"],
-  data() {
-    return {
-      editValue: this.editTodo.name,
+<script setup>
+import { ref } from "vue";
+const emit = defineEmits();
+let inputValue = ref("");
+
+const addTodo = () => {
+  if (inputValue.value.trim() !== "") {
+    const newTodo = {
+      id: self.crypto.randomUUID(),
+      name: inputValue.value,
+      isComplete: false,
     };
-  },
-  methods: {
-    saveTodo() {
-      console.log(this.isEdit);
-      this.$emit("changeIsEdit", !this.isEdit);
-    },
-  },
+    emit("handleAdd", newTodo);
+    inputValue.value = "";
+  }
 };
 </script>
 
@@ -55,7 +60,7 @@ input:focus {
   -webkit-box-shadow: 0px 0px 15px 0px darkblue;
   -moz-box-shadow: 0px 0px 15px 0px darkblue;
 }
-.form-button {
+button {
   background-color: darkblue;
   color: white;
   outline: none;
@@ -73,10 +78,10 @@ input:focus {
 
 @keyframes rotation {
   from {
-    transform: rotateY(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform: rotateY(360deg);
+    transform: rotate(360deg);
   }
 }
 </style>
