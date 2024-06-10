@@ -8,13 +8,3 @@
 export default {};
 </script>
 
-<style scoped>
-.loading {
-  width: 100%;
-  min-height: 400px;
-  /* height: 50vh; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>

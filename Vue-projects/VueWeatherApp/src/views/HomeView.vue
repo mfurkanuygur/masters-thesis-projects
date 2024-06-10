@@ -1,10 +1,14 @@
 <template>
- <main>
+  <main>
+    <h1 className="main-title">Weather App with Vue</h1>
     <EnterForm :cityName="cityName" @searchCity="handleSearch" />
-    <div v-if="cityData"></div>
-    <DisplayLocation v-if="cityData" :cityData="cityData" />
-    <Loading v-else/>
- </main>
+    <DisplayLocation
+      v-if="cityDatas"
+      :citySummaryData="cityDatas[0]"
+      :cityDetailData="cityDatas[1]"
+    />
+    <Loading v-else />
+  </main>
 </template>
 
 <script>
@@ -15,24 +19,24 @@ import DisplayLocation from "../components/DisplayLocation.vue";
 import { getApiData } from "../request/request";
 
 export default {
-  components: { EnterForm, DisplayLocation,Loading },
+  components: { EnterForm, DisplayLocation, Loading },
   data() {
     return {
       cityName: "Kayseri",
-      cityData: null,
+      cityDatas: null,
     };
   },
   methods: {
     handleSearch(newCity) {
       this.cityName = newCity;
       getApiData(this.cityName).then((data) => {
-        this.cityData = data;
+        this.cityDatas = data;
       });
     },
   },
   mounted() {
     getApiData(this.cityName).then((data) => {
-      this.cityData = data;
+      this.cityDatas = data;
     });
   },
 };
